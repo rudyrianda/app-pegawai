@@ -8,11 +8,24 @@ class Employee extends Model
 {
     protected $fillable = [
         'nama_lengkap',
-        'email',
+        'email', 
         'nomor_telepon',
         'tanggal_lahir',
         'alamat',
         'tanggal_masuk',
-        'status', // Tambahkan nanti: 'departemen_id', 'jabatan_id'
+        'status',
+        'departemen_id',  // TAMBAHKAN INI
+        'jabatan_id',     // TAMBAHKAN INI
     ];
+
+    // Tambahkan relasi
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'departemen_id');
+    }
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'jabatan_id');
+    }
 }
