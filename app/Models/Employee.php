@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Employee extends Model
 {
@@ -13,18 +14,23 @@ class Employee extends Model
         'tanggal_lahir',
         'alamat',
         'tanggal_masuk',
-        'status',
-        'departemen_id',  // TAMBAHKAN INI
-        'jabatan_id',     // TAMBAHKAN INI
+        'departemen_id',
+        'jabatan_id',
+        'status'
     ];
 
-    // Tambahkan relasi
-    public function department()
+    /**
+     * Relasi ke model Department
+     */
+    public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'departemen_id');
     }
 
-    public function position()
+    /**
+     * Relasi ke model Position
+     */
+    public function position(): BelongsTo
     {
         return $this->belongsTo(Position::class, 'jabatan_id');
     }
