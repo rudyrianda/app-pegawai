@@ -78,15 +78,7 @@
                 </tbody>
             </table>
         </div>
-        @foreach($positions as $position)
-<tr>
-    <td>{{ $loop->iteration }}</td>
-    <td><strong>{{ $position->nama_jabatan }}</strong></td>
-    <td>Rp {{ number_format($position->gaji_pokok, 0, ',', '.') }}</td>
-    <td><span class="badge bg-info">{{ $position->employees_count }} orang</span></td>
-    <!-- ... rest of the row ... -->
-</tr>
-@endforeach
+     
         <!-- Pagination -->
         @if($positions->hasPages())
         <div class="d-flex justify-content-center mt-4">
